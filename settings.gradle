@@ -1,0 +1,4 @@
+rootProject.name = 'react-native-amap-android'
+
+include ":react-native-amap-android-lib"
+project(":react-native-amap-android-lib").projectDir = file("./lib/android")

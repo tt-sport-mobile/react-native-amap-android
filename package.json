@@ -1,0 +1,29 @@
+{
+  "name": "react-native-amap-android",
+  "version": "1.0.0",
+  "description": "react-native-maps port that supports the AutoNavi (amap) map",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:android && npm run build:ios",
+    "build:android": "./gradlew :react-native-amap-android:assembleDebug",
+    "build:js": "exit 0",
+    "ci": "npm run lint",
+    "lint": "eslint ./",
+    "preversion": "./scripts/update-version.js",
+    "run:android": "./gradlew installDebug && npm run start:android",
+    "run:packager": "./node_modules/react-native/packager/packager.sh",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start:android": "adb shell am start -n com.airbnb.android.react.maps.example/.MainActivity"
+  },
+  "keywords": [
+    "amap"
+  ],
+  "author": {
+    "name": "Pieter van der Werf",
+    "email": "pieter.vanderwerf@tomtom.com"
+  },
+  "license": "MIT"
+}
