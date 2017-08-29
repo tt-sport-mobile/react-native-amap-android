@@ -57,5 +57,4 @@ dependencies {
 
 dependencies {
   provided "com.facebook.react:react-native:+"
-//  compile files('app/libs/Amap_2DMap_V4.2.0_20170209.jar')
 }

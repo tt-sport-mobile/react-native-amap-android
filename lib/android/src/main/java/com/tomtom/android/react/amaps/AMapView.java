@@ -19,9 +19,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.AMapException;
 import com.amap.api.maps2d.AMapOptions;
-import com.amap.api.maps2d.model.CameraPosition;
+import com.amap.api.maps2d.CameraUpdate;
+import com.amap.api.maps2d.CameraUpdateFactory;
+import com.amap.api.maps2d.MapView;
+import com.amap.api.maps2d.Projection;
+import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.LatLngBounds;
+import com.amap.api.maps2d.model.Marker;
+import com.amap.api.maps2d.model.Polyline;
+import com.amap.api.maps2d.model.VisibleRegion;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
@@ -37,17 +46,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.CameraUpdate;
-import com.amap.api.maps2d.CameraUpdateFactory;
-import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.LatLng;
-import com.amap.api.maps2d.model.LatLngBounds;
-import com.amap.api.maps2d.model.Marker;
-import com.amap.api.maps2d.model.Polyline;
-import com.amap.api.maps2d.model.VisibleRegion;
-import com.amap.api.maps2d.Projection;
 
 import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 
@@ -643,7 +641,7 @@ public class AMapView extends MapView implements AMap.InfoWindowAdapter,
                 (lastBoundsEmitted == null || LatLngBoundsUtils.BoundsAreDifferent(bounds, lastBoundsEmitted))) {
                 LatLng center = map.getCameraPosition().target;
                 lastBoundsEmitted = bounds;
-                eventDispatcher.dispatchEvent(new RegionChangeEvent(getId(), bounds, center, true));
+                eventDispatcher.dispatchEvent(new RegionChangeEvent(getId(), bounds, center, isTouchDown));
             }
 
             timerHandler.postDelayed(this, 100);
