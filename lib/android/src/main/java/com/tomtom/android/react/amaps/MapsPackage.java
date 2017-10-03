@@ -24,7 +24,7 @@ public class MapsPackage implements ReactPackage {
         return Arrays.<NativeModule>asList(new AMapModule(reactContext));
     }
 
-    @Override
+    // Deprecated
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
